@@ -1,0 +1,7 @@
+{
+  "name": "DuctrApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

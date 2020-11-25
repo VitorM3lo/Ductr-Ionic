@@ -1,0 +1,50 @@
+<ion-menu side="start" menuId="first" contentId="main" type="push">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Subtitles</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-label>Language</ion-label>
+        <ion-select interface="popover" [(ngModel)]="selectedLanguage" (ngModelChange)="searchSubtitles()">
+          <ion-select-option *ngFor="let language of languages" [value]="language">{{language}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="subtitleLoading" class="spinner">
+        <ion-spinner name="lines"></ion-spinner>
+      </ion-item>
+      <ion-item *ngIf="subtitleError" color="warning">No subtitles</ion-item>
+      <ion-item *ngFor="let subtitle of subtitles" (click)="selectSubtitle(subtitle)" button>
+        {{subtitle.filename}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div id="main" class="main">
+  <ion-header [translucent]="false">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button slot="icon-only" href="/tabs/home">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="icon-only" (click)="openMenu()">
+          <ion-icon name="text-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>
+        Playing - [moviename]
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true">
+    <video controls slot="fixed">
+      <source [src]="link" type="video/mp4">
+      <ng-container *ngIf="selectedLanguage && selectedSubtitle">
+        <track [src]="vtt" [srclang]="selectedLanguage" [label]="selectedSubtitle.filename">
+      </ng-container>
+    </video>
+  </ion-content>
+</div>

@@ -1,0 +1,12 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "DuctrApp",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1
+    }
+  }
+}

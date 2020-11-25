@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false" class="ion-padding">
+  <ion-title collapse="condense" size="large">Downloaded</ion-title>
+  <ion-grid [fixed]="true">
+    <ion-row>
+      <ion-col *ngFor="let videoFile of videoFiles" size-sm="6" size-md="4" size-lg="3" size-xs="12">
+        <app-image-video-card [videoFile]="videoFile"></app-image-video-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
